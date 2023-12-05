@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Wishes</title>
+  <style>
+    /* CSS styling for the background */
+    body {
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* CSS styling for the header */
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* CSS styling for the birthday wishes container */
+    .birthday-wishes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    /* CSS styling for the birthday wishes card */
+    .birthday-wishes-card {
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+
+    /* CSS styling for the text fields */
+    .text-fields {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    /* CSS styling for the preview button */
+    .preview-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    /* CSS styling for the footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* CSS styling for the falling flowers animation */
+    .falling-flowers {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .falling-flower {
+      position: absolute;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background-image: url('flower.png');
+      background-size: cover;
+      animation: fall infinite linear;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Birthday Wishes</h1>
+  </div>
+
+  <div class="birthday-wishes-container">
+    <!-- Birthday wishes cards will be added dynamically -->
+  </div>
+
+  <div class="text-fields">
+    <input type="text" id="name-input" placeholder="Enter Name">
+    <textarea id="message-input" placeholder="Enter Birthday Message"></textarea>
+  </div>
+
+  <div class="preview-button">
+    <button onclick="createBirthdayWish()">Preview Birthday Wish</button>
+  </div>
+
+  <div class="falling-flowers"></div>
+
+  <div class="footer">
+    <p>&copy; 2023 Birthday Wishes App</p>
+  </div>
+
+  <script>
+    // JavaScript code for creating birthday wishes
+    function createBirthdayWish() {
+      var name = document.getElementById('name-input').value;
+      var message = document.getElementById('message-input').value;
+
+      if (name && message) {
+        var birthdayWishesContainer = document.querySelector('.birthday-wishes-container');
+
+        // Create a new birthday wishes card
+        var card = document.createElement('div');
+        card.className = 'birthday-wishes-card';
+
+        // Set the content of the card
+        var cardContent = document.createElement('p');
+        cardContent.innerHTML = `Happy Birthday, ${name}!<br>${message}`;
+
+        card.appendChild(cardContent);
+        birthdayWishesContainer.appendChild(card);
+
+        // Clear the text fields after creating the birthday wish
+        document.getElementById('name-input').value = '';
+        document.getElementById('message-input').value = '';
+
+        // Trigger falling flowers animation
+        triggerFallingFlowers();
+      } else {
+        alert('Please enter a name and message before creating a birthday wish.');
+      }
+    }
+
+    // JavaScript code for falling flowers animation
+    function triggerFallingFlowers() {
+      var fallingFlowerContainer = document.querySelector('.falling-flowers');
+
+      // Create multiple falling flower elements
+      for (var i = 0; i < 10; i++) {
+        var flower = document.createElement('div');
+        flower.className = 'falling-flower';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.animationDuration = Math.random() * 5 + 3 + 's';
+        flower.style.animationDelay = Math.random() * 2 + 's';
+        fallingFlowerContainer.appendChild(flower);
+      }
+    }
+  </script>
+</body>
+</html>
