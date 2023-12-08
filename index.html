@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <base href="https://swapnadabburi.github.io/swapna-web2/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Wishes</title>
   <style>
     /* CSS styling for the background */
@@ -9,7 +12,6 @@
       margin: 0;
       padding: 0;
     }
-
     /* CSS styling for the header */
     .header {
       background-color: #333;
@@ -17,7 +19,6 @@
       padding: 10px;
       text-align: center;
     }
-
     /* CSS styling for the birthday wishes container */
     .birthday-wishes-container {
       display: flex;
@@ -26,7 +27,6 @@
       align-items: center;
       margin-top: 20px;
     }
-
     /* CSS styling for the birthday wishes card */
     .birthday-wishes-card {
       background-color: #fff;
@@ -36,19 +36,16 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
       border-radius: 5px;
     }
-
     /* CSS styling for the text fields */
     .text-fields {
       margin-top: 20px;
       text-align: center;
     }
-
     /* CSS styling for the preview button */
     .preview-button {
       margin-top: 20px;
       text-align: center;
     }
-
     /* CSS styling for the footer */
     .footer {
       background-color: #333;
@@ -59,7 +56,6 @@
       bottom: 0;
       width: 100%;
     }
-
     /* CSS styling for the falling flowers animation */
     .falling-flowers {
       position: absolute;
@@ -70,7 +66,6 @@
       pointer-events: none;
       z-index: 9999;
     }
-
     .falling-flower {
       position: absolute;
       top: 0;
@@ -80,7 +75,6 @@
       background-size: cover;
       animation: fall infinite linear;
     }
-
     @keyframes fall {
       0% {
         transform: translateY(-100px);
@@ -97,26 +91,22 @@
   <div class="header">
     <h1>Birthday Wishes</h1>
   </div>
-
   <div class="birthday-wishes-container">
-    <!-- Birthday wishes cards will be added dynamically -->
+    <!-- Birthday wishes cards will be added dynamically-->
   </div>
-
   <div class="text-fields">
+    <label for="name-input">Enter Name</label>
     <input type="text" id="name-input" placeholder="Enter Name">
-    <textarea id="message-input" placeholder="Enter Birthday Message"></textarea>
+    <label for="message-input">Enter Birthday Message</label>
+    <textarea id="message-input" placeholder="Enter Birthday Message" data-gramm="false" wt-ignore-input="true"></textarea>
   </div>
-
   <div class="preview-button">
     <button onclick="createBirthdayWish()">Preview Birthday Wish</button>
   </div>
-
   <div class="falling-flowers"></div>
-
   <div class="footer">
-    <p>&copy; 2023 Birthday Wishes App</p>
+    <p>© 2023 Birthday Wishes App</p>
   </div>
-
   <script>
     // JavaScript code for creating birthday wishes
     function createBirthdayWish() {
@@ -125,16 +115,16 @@
 
       if (name && message) {
         var birthdayWishesContainer = document.querySelector('.birthday-wishes-container');
-
+        
         // Create a new birthday wishes card
         var card = document.createElement('div');
         card.className = 'birthday-wishes-card';
-
+        
         // Set the content of the card
         var cardContent = document.createElement('p');
         cardContent.innerHTML = `Happy Birthday, ${name}!<br>${message}`;
-
         card.appendChild(cardContent);
+        
         birthdayWishesContainer.appendChild(card);
 
         // Clear the text fields after creating the birthday wish
@@ -151,7 +141,7 @@
     // JavaScript code for falling flowers animation
     function triggerFallingFlowers() {
       var fallingFlowerContainer = document.querySelector('.falling-flowers');
-
+      
       // Create multiple falling flower elements
       for (var i = 0; i < 10; i++) {
         var flower = document.createElement('div');
